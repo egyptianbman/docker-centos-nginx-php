@@ -16,6 +16,7 @@ RUN rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 
 # Install base packages
 RUN yum install -y --enablerepo=mysql56-community-source,remi,remi-php56 \
+    ctags \
     git \
     mysql \
     nginx \
@@ -50,7 +51,11 @@ RUN mkdir $HOME/.ssh/ && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 RUN git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick \
     && printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' > $HOME/.zshrc \
     && $HOME/.homesick/repos/homeshick/bin/homeshick -fb clone https://github.com/keelerm84/dotfiles.git \
-    && $HOME/.homesick/repos/homeshick/bin/homeshick -fb link
+    && $HOME/.homesick/repos/homeshick/bin/homeshick -fb link \
+    && mkdir -p $HOME/.vim/bundle/ \
+    && git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/vundle \
+    && echo -e "set nocompatible\nfiletype off\nset rtp+=~/.vim/bundle/vundle/\ncall vundle#rc()\nsource ~/.vim/config/bundles" > $HOME/.vim/vundle-install.vimrc \
+    && vim -u $HOME/.vim/vundle-install.vimrc +BundleInstall! +qall
 
 EXPOSE 80
 EXPOSE 443
