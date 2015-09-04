@@ -1,0 +1,14 @@
+---
+# This playbook sets up the server.
+
+- name: Set up centos 7 server environment
+  hosts: localhost
+
+  vars:
+    basedir: .
+
+  # vars_files:
+  #   - "{{ basedir }}/group_vars/all"
+
+  roles:
+    - { role: server, tags: ['server'] }

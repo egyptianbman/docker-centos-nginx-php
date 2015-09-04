@@ -1,0 +1,27 @@
+---
+
+packages_standard:
+  - ctags
+  - git
+  - mysql
+  - nginx
+  - vim-enhanced
+  - zsh
+
+packages_remi:
+  - php-cli
+  - php-common
+  - php-fpm
+  - php-gd
+  - php-mbstring
+  - php-mcrypt
+  - php-mysql
+  - php-opcache
+  - php-pdo
+  - php-pear
+  - php-pecl-memcached
+  - php-soap
+  - php-xml
+
+packages_mysql:
+  - mysql

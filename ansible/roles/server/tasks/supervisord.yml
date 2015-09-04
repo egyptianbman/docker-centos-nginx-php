@@ -1,0 +1,19 @@
+---
+# Set up supervisord
+
+- name: Pip | Install supervisord
+  shell: /bin/pip install --upgrade supervisor
+
+- name: Supervisord | Copy configs
+  template:
+    src="etc/supervisord.conf"
+    dest=/etc/supervisord.conf
+    owner=root
+    group=root
+    mode=0744
+
+- file:
+    path=/var/log/supervisord
+    state=directory
+    owner=root
+    group=root

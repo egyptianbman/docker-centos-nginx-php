@@ -1,0 +1,18 @@
+---
+# Set up a pleasant experience when the user sshs into the container.
+
+- name: install homeshick
+  git:
+    repo=git://github.com/andsens/homeshick.git
+    dest=/root/.homesick/repos/homeshick
+    accept_hostkey=yes
+
+- name: install dotfiles
+  git:
+    repo=git://github.com/keelerm84/dotfiles.git
+    dest=/root/.homesick/repos/dotfiles
+    accept_hostkey=yes
+    update=yes
+
+- name: link out dotfiles
+  command: "/root/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"

@@ -1,0 +1,9 @@
+---
+# Set up the server
+
+- include: time.yml
+- include: packages.yml
+- include: composer.yml
+- include: supervisord.yml
+- include: dotfiles.yml
+- include: vim.yml

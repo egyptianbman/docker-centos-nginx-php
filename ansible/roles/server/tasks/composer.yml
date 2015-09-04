@@ -1,0 +1,19 @@
+---
+# Install composer.
+
+- name: Install composer
+  file:
+    path=/usr/local/bin
+    state=directory
+
+- shell:
+    curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/local/bin
+    creates=/usr/local/bin/composer.phar
+
+- file:
+    path=/usr/local/bin/composer.phar
+    mode=0777
+
+- shell:
+    /usr/local/bin/composer.phar self-update
+  ignore_errors: yes

@@ -2,62 +2,22 @@ FROM centos:latest
 
 MAINTAINER Beshoy Girgis <shoy@1ds.us>
 
-# Update package lists and packages
-RUN yum -y update && yum -y upgrade
+RUN yum clean all && \
+    yum -y install epel-release && \
+    yum -y install PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko python-setuptools git python-pip
+RUN mkdir /etc/ansible/
+RUN echo -e '[local]\nlocalhost' > /etc/ansible/hosts
+RUN pip install ansible
 
-## EPEL: Remi Dependency on CentOS 7 and Red Hat (RHEL) 7 ##
-RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+# Add the ansible playbooks
+ADD ansible /srv/server
 
-## REMI: CentOS 7 and Red Hat (RHEL) 7 ##
-RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+# Run the playbooks
+RUN ansible-playbook /srv/server/server.yml -c local
 
-## MYSQL: CentOS 7 and Red Hat (RHEL) 7 ##
-RUN rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+RUN mkdir /site
+WORKDIR /site
 
-# Install base packages
-RUN yum install -y --enablerepo=mysql56-community-source,remi,remi-php56 \
-    ctags \
-    git \
-    mysql \
-    nginx \
-    php-common \
-    php-fpm \
-    vim \
-    zsh
-
-# Install additional packages/modules
-RUN yum install -y --enablerepo=remi,remi-php56 \
-    php-cli \
-    php-gd \
-    php-mbstring \
-    php-mcrypt \
-    php-opcache \
-    php-pdo \
-    php-pear \
-    php-pecl-memcached
-
-# Installing supervisor
-RUN yum install -y python-setuptools
-RUN easy_install pip
-RUN pip install supervisor
-
-# Adding the configuration file of the Supervisor
-ADD supervisord.conf /etc/
-
-# Add github to known_hosts
-RUN mkdir $HOME/.ssh/ && ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-
-# Set up dotfiles.
-RUN git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick \
-    && printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' > $HOME/.zshrc \
-    && $HOME/.homesick/repos/homeshick/bin/homeshick -fb clone https://github.com/keelerm84/dotfiles.git \
-    && $HOME/.homesick/repos/homeshick/bin/homeshick -fb link \
-    && mkdir -p $HOME/.vim/bundle/ \
-    && git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/vundle \
-    && echo -e "set nocompatible\nfiletype off\nset rtp+=~/.vim/bundle/vundle/\ncall vundle#rc()\nsource ~/.vim/config/bundles" > $HOME/.vim/vundle-install.vimrc \
-    && vim -u $HOME/.vim/vundle-install.vimrc +BundleInstall! +qall
-
-EXPOSE 80
-EXPOSE 443
+EXPOSE 22 80 443
 
 CMD ["supervisord", "-n"]

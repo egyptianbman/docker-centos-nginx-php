@@ -1,0 +1,9 @@
+---
+# Set up the server
+
+- name: Set time zone to America/Chicago
+  file:
+    path=/etc/localtime
+    src=/usr/share/zoneinfo/America/Chicago
+    state=link
+    force=yes
