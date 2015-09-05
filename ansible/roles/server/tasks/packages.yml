@@ -39,9 +39,5 @@
   shell: /bin/pip install --upgrade pip
   ignore_errors: yes
 
-- name: Upgrade /bin/pip
-  shell: /bin/pip install --upgrade pip
-  ignore_errors: yes
-
 - name: Clean packages
   command: yum clean all

@@ -1,0 +1,11 @@
+app:
+  build: .
+  ports:
+    - "80"
+  expose:
+    - "80"
+  volumes:
+    - .:/site
+    - ./docker/nginx/sites-enabled/example.conf:/etc/nginx/conf.d/example.conf
+  environment:
+    - VIRTUAL_HOST=example.docker
