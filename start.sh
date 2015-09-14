@@ -10,5 +10,9 @@ if [ -f "/docker/start.sh" ]; then
     /docker/start.sh
 fi
 
+# helper functions to restart nginx and php-fpm.
+echo "function restart-nginx {kill \$(ps -eo pid,comm | grep nginx | awk 'NR == 1 {print \$1}'); }" >> /root/.bashrc
+echo "function restart-php-fpm {kill \$(ps -eo pid,comm | grep php-fpm | awk 'NR == 1 {print \$1}'); }" >> /root/.bashrc
+
 # Start supervisord and services
 /usr/bin/supervisord -n -c /etc/supervisord.conf
