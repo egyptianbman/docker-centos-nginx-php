@@ -22,6 +22,12 @@
     line="catch_workers_output = yes"
 
 # php.ini
+- name: Create php.ini symlink so php-fpm picks it up
+  file:
+    src=/etc/php.ini
+    dest=/etc/php-fpm.d/php.ini
+    state=link
+
 - name: php upload_max_size
   lineinfile:
     dest=/etc/php.ini

@@ -6,6 +6,7 @@ app:
     - "80"
   volumes:
     - .:/site
+    - ./docker:/docker
     - ./docker/nginx/conf.d/example.conf:/etc/nginx/conf.d/example.conf
   environment:
     - VIRTUAL_HOST=example.docker

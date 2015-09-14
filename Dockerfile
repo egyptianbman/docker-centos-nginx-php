@@ -21,6 +21,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 RUN ln -sf /dev/stderr /var/log/php-fpm/error.log
 RUN ln -sf /dev/stderr /var/log/php-fpm/www-error.log
+RUN ln -sf /dev/stderr /var/log/php-fpm/www-slow.log
 
 # Create site directory and set it as the default
 RUN mkdir /site

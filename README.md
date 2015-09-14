@@ -9,3 +9,6 @@ The container is built using ansible on centos 7(:latest) running nginx and php-
 A conscious effort has been made to modify as little as possible to allow the consumer full freedom to modify at will.
 
 An example usage of this container can be found in the [example](https://github.com/egyptianbman/docker-centos-nginx-php/tree/master/example) directory utilizing [docker-compose](https://docs.docker.com/compose/).
+
+#### Notes:
+- Add/mount a `/docker` directory with a `start.sh` script to have it automatically picked up and executed on startup, before `supervisord` (see [example](https://github.com/egyptianbman/docker-centos-nginx-php/tree/master/example)).
