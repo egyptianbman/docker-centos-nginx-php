@@ -16,9 +16,11 @@ ADD ansible /srv/server
 # Run the playbooks
 RUN ansible-playbook /srv/server/server.yml -c local
 
-# forward nginx request and error logs to docker log collector
+# forward nginx and php-fpm request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
+RUN ln -sf /dev/stderr /var/log/php-fpm/error.log
+RUN ln -sf /dev/stderr /var/log/php-fpm/www-error.log
 
 # Create site directory and set it as the default
 RUN mkdir /site
