@@ -37,5 +37,5 @@
 - name: php post_max_size
   lineinfile:
     dest=/etc/php.ini
-    regexp="post_max_filesize = 8M"
-    line="post_max_filesize = 200M"
+    regexp="post_max_size = 8M"
+    line="post_max_size = 200M"

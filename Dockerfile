@@ -10,7 +10,7 @@ RUN mkdir /etc/ansible/
 RUN echo -e '[local]\nlocalhost' > /etc/ansible/hosts
 RUN pip install ansible
 
-# Add the ansible playbooks
+# Add the ansible playbook
 ADD ansible /srv/server
 
 # Run the playbooks
