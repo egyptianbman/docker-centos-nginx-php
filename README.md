@@ -1,5 +1,7 @@
 # docker-centos-nginx-php
 
+Updated: 2015-12-20
+
 This repo is hosted on Github at https://www.github.com/egyptianbman/docker-centos-nginx-php/
 
 This container aims to be a fully-functional, highly configurable yet minimalistic.
