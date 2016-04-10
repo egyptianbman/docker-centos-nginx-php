@@ -17,6 +17,13 @@
 - name: link out dotfiles
   command: "/root/.homesick/repos/homeshick/bin/homeshick link dotfiles -f -q"
 
+- name: copy local aliases file
+  copy:
+    src=root/.zsh.local/aliases.zsh
+    dest=/root/.zsh.local/aliases.zsh
+    owner=root
+    group=root
+
 - name: copy local functions file
   copy:
     src=root/.zsh.local/functions.zsh
