@@ -17,7 +17,7 @@
   yum:
     name={{ item }}
     state=present
-    enablerepo=remi,remi-php56
+    enablerepo=remi,remi-php70
   with_items: "{{ packages_remi }}"
 
 - name: YUM | Install the mysql-release rpm

@@ -1,4 +1,4 @@
-# docker-centos-nginx-php
+# docker-centos-nginx-php:7.0
 
 Updated: 2016-04-10
 
