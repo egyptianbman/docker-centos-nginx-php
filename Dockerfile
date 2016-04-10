@@ -28,7 +28,7 @@ RUN mkdir /site
 WORKDIR /site
 
 # expose ports
-EXPOSE 22 80 443
+EXPOSE 80 443
 
 # Add startup script
 ADD ./start.sh /start.sh
