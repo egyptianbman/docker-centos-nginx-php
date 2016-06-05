@@ -9,6 +9,10 @@ php 7.0: egyptianbman/docker-centos-nginx-php:7.0
 This repo is hosted on Github at
 https://www.github.com/egyptianbman/docker-centos-nginx-php/
 
+### Available tags
+php 5.6: egyptianbman/docker-centos-nginx-php:latest
+php 7.0: egyptianbman/docker-centos-nginx-php:7.0
+
 This container aims to be a fully-functional, highly configurable yet
 minimalistic.
 
