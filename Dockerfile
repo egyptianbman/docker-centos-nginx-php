@@ -16,6 +16,9 @@ ADD ansible /srv/server
 # Run the playbooks
 RUN ansible-playbook /srv/server/server.yml -c local
 
+# Slim down the container
+RUN yum clean all
+
 # forward nginx and php-fpm request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log

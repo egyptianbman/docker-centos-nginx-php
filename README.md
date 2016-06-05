@@ -1,6 +1,6 @@
 # docker-centos-nginx-php:7.0
 
-Updated: 2016-04-10
+Updated: 2016-06-05
 
 This repo is hosted on Github at
 https://www.github.com/egyptianbman/docker-centos-nginx-php/
@@ -15,10 +15,10 @@ A conscious effort has been made to modify as little as possible to allow the
 consumer full freedom to modify at will.
 
 An example usage of this container can be found in the
-[example](https://github.com/egyptianbman/docker-centos-nginx-php/tree/master/example)
+[example](https://github.com/egyptianbman/docker-centos-nginx-php/tree/7.0/example)
 directory utilizing [docker-compose](https://docs.docker.com/compose/).
 
 #### Notes:
 - Add/mount a `/docker` directory with a `start.sh` script to have it
   automatically picked up and executed on startup, before `supervisord` (see
-  [example](https://github.com/egyptianbman/docker-centos-nginx-php/tree/master/example)).
+  [example](https://github.com/egyptianbman/docker-centos-nginx-php/tree/7.0/example)).
