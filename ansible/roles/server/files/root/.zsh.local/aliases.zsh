@@ -10,8 +10,8 @@ alias mkdir="mkdir -pv"
 # }}}
 
 # Server {{{
-alias restart-nginx="pkill nginx"
-alias restart-php-fpm="pkill php-fpm"
+alias restart-nginx="supervisorctl restart nginx"
+alias restart-php-fpm="supervisorctl restart php-fpm"
 # }}}
 
 # Git {{{
