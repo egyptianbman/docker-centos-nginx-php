@@ -23,10 +23,3 @@
     dest=/root/.zsh.local/aliases.zsh
     owner=root
     group=root
-
-- name: copy local functions file
-  copy:
-    src=root/.zsh.local/functions.zsh
-    dest=/root/.zsh.local/functions.zsh
-    owner=root
-    group=root
