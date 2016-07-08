@@ -1,43 +1,35 @@
 ---
 # Install necessary packages
 
+- name: Enable apt repositories
+  apt_repository:
+    repo={{ item }}
+    state=present
+  with_items:
+    - ppa:fcwu-tw/ppa
+    - ppa:git-core/ppa
+    - ppa:nginx/stable
+    - ppa:ondrej/php5
+
 - name: Install standard packages
-  yum:
+  apt:
     name={{ item }}
     state=present
-    enablerepo=epel
   with_items: "{{ packages_standard }}"
 
-- name: YUM | Install the remi-release rpm
-  yum:
-    name=http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-    state=present
-
-- name: Install remi packages (php)
-  yum:
+- name: Install php packages
+  apt:
     name={{ item }}
     state=present
-    enablerepo=remi,remi-php56
-  with_items: "{{ packages_remi }}"
-
-- name: YUM | Install the mysql-release rpm
-  yum:
-    name=http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-    state=present
-
-- name: Install mysql packages (mysql)
-  yum:
-    name={{ item }}
-    state=present
-    enablerepo=mysql56-community-source
-  with_items: "{{ packages_mysql }}"
+  with_items: "{{ packages_php }}"
 
 - name: Upgrade all packages
-  yum: name=* state=latest
+  apt:
+    upgrade=dist
 
 - name: Upgrade /usr/bin/pip
   shell: /usr/bin/pip install --upgrade pip
   ignore_errors: yes
 
 - name: Clean packages
-  command: yum clean all
+  shell: apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
