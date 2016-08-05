@@ -11,4 +11,4 @@ if [ -f "/docker/start.sh" ]; then
 fi
 
 # Start supervisord and services
-/usr/bin/supervisord -n -c /etc/supervisord.conf
+/usr/local/bin/supervisord -n -c /etc/supervisord.conf

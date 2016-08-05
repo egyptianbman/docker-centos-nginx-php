@@ -20,22 +20,24 @@ ADD ansible /srv/server
 RUN ansible-playbook /srv/server/server.yml -c local
 
 # # forward nginx and php-fpm request and error logs to docker log collector
-# RUN ln -sf /dev/stdout /var/log/nginx/access.log
-# RUN ln -sf /dev/stderr /var/log/nginx/error.log
-# RUN ln -sf /dev/stderr /var/log/php-fpm/error.log
-# RUN ln -sf /dev/stderr /var/log/php-fpm/www-error.log
-# RUN ln -sf /dev/stderr /var/log/php-fpm/www-slow.log
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
+
+RUN mkdir /var/log/php-fpm/
+RUN ln -sf /dev/stderr /var/log/php-fpm/error.log
+RUN ln -sf /dev/stderr /var/log/php-fpm/www-error.log
+RUN ln -sf /dev/stderr /var/log/php-fpm/www-slow.log
 
 # # Create site directory and set it as the default
-# RUN mkdir /site
-# WORKDIR /site
+RUN mkdir /site
+WORKDIR /site
 
 # # expose ports
-# EXPOSE 80
+EXPOSE 80
 
 # # Add startup script
-# ADD ./start.sh /start.sh
-# RUN chmod 755 /start.sh
+ADD ./start.sh /start.sh
+RUN chmod 755 /start.sh
 
 # # Execute start script
-# CMD ["/bin/bash", "/start.sh"]
+CMD ["/bin/bash", "/start.sh"]

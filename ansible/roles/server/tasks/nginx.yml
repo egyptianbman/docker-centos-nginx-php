@@ -4,6 +4,6 @@
 - name: disable nginx daemon
   lineinfile:
     dest=/etc/nginx/nginx.conf
-    regexp=""
+    regexp="pid.*pid;"
     insertafter=EOF
-    line="}\ndaemon off;"
+    line="pid /run/nginx.pid;\ndaemon off;"

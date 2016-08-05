@@ -8,8 +8,8 @@
 
 # serving
 - include: supervisord.yml
-# - include: nginx.yml
-# - include: php.yml
+- include: nginx.yml
+- include: php.yml
 
 # # user
 - include: dotfiles.yml

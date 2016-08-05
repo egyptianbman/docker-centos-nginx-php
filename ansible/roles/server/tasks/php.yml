@@ -2,24 +2,24 @@
 # Configure php-fpm
 
 # php-fpm.conf
-# - name: disable php-fpm daemon
-#   lineinfile:
-#     dest=/etc/php5/fpm/php-fpm.conf
-#     regexp="daemonize = yes"
-#     line="daemonize = no"
+- name: disable php-fpm daemon
+  lineinfile:
+    dest=/etc/php5/fpm/php-fpm.conf
+    regexp=";daemonize = yes"
+    line="daemonize = no"
 
 # # www.conf
-# - name: fixing php-fpm sock file permissions
-#   lineinfile:
-#     dest=/etc/php-fpm.d/www.conf
-#     regexp=";listen.mode = 0660"
-#     line="listen.mode = 0750"
+- name: fixing php-fpm sock file permissions
+  lineinfile:
+    dest=/etc/php5/fpm/pool.d/www.conf
+    regexp=";listen.mode = 0660"
+    line="listen.mode = 0750"
 
 # - name: fixing php-fpm sock file permissions
-#   lineinfile:
-#     dest=/etc/php-fpm.d/www.conf
-#     regexp=";catch_workers_output = yes"
-#     line="catch_workers_output = yes"
+  lineinfile:
+    dest=/etc/php5/fpm/pool.d/www.conf
+    regexp=";catch_workers_output = yes"
+    line="catch_workers_output = yes"
 
 # # php.ini
 # - name: Create php.ini symlink so php-fpm picks it up
@@ -28,14 +28,14 @@
 #     dest=/etc/php-fpm.d/php.ini
 #     state=link
 
-# - name: php upload_max_size
-#   lineinfile:
-#     dest=/etc/php.ini
-#     regexp="upload_max_filesize = 2M"
-#     line="upload_max_filesize = 200M"
+- name: php upload_max_size
+  lineinfile:
+    dest=/etc/php5/fpm/php.ini
+    regexp="upload_max_filesize = 2M"
+    line="upload_max_filesize = 200M"
 
 # - name: php post_max_size
-#   lineinfile:
-#     dest=/etc/php.ini
-#     regexp="post_max_size = 8M"
-#     line="post_max_size = 200M"
+  lineinfile:
+    dest=/etc/php5/fpm/php.ini
+    regexp="post_max_size = 8M"
+    line="post_max_size = 200M"

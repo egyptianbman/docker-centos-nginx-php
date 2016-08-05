@@ -6,6 +6,7 @@ packages_standard:
   - nginx
   - vim
   - zsh
+  - mysql-client
 
 packages_php:
   - php5-cli
