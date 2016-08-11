@@ -8,7 +8,7 @@
     regexp=";daemonize = yes"
     line="daemonize = no"
 
-# # www.conf
+# www.conf
 - name: fixing php-fpm sock file permissions
   lineinfile:
     dest=/etc/php5/fpm/pool.d/www.conf
@@ -20,13 +20,6 @@
     dest=/etc/php5/fpm/pool.d/www.conf
     regexp=";catch_workers_output = yes"
     line="catch_workers_output = yes"
-
-# # php.ini
-# - name: Create php.ini symlink so php-fpm picks it up
-#   file:
-#     src=/etc/php.ini
-#     dest=/etc/php-fpm.d/php.ini
-#     state=link
 
 - name: php upload_max_size
   lineinfile:
