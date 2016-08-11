@@ -4,6 +4,9 @@
 - name: Pip | Install supervisord
   shell: /usr/local/bin/pip install --upgrade supervisor
 
+- name: Pip | Install requests[security]
+  shell: /usr/local/bin/pip install 'requests[security]'
+
 - name: Supervisord | Copy configs
   template:
     src="etc/supervisord.conf"
