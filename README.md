@@ -1,10 +1,11 @@
 # docker-centos-nginx-php:7.0
 
-Updated: 2016-06-25
+This repo is hosted on Github at https://github.com/egyptianbman/docker-centos-nginx-php/
 
 ### Available tags
-php 5.6: egyptianbman/docker-centos-nginx-php:latest
-php 7.0: egyptianbman/docker-centos-nginx-php:7.0
+- php 5.5: egyptianbman/docker-centos-nginx-php:ubuntu12-5.5
+- php 5.6: egyptianbman/docker-centos-nginx-php:latest
+- php 7.0: egyptianbman/docker-centos-nginx-php:7.0
 
 This repo is hosted on Github at
 https://www.github.com/egyptianbman/docker-centos-nginx-php/
