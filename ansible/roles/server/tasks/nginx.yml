@@ -6,4 +6,4 @@
     dest=/etc/nginx/nginx.conf
     regexp=""
     insertafter=EOF
-    line="}\ndaemon off;"
+    line="\ndaemon off;"
