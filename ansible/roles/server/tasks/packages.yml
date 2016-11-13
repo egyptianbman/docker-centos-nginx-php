@@ -9,7 +9,7 @@
     - ppa:fcwu-tw/ppa
     - ppa:git-core/ppa
     - ppa:nginx/stable
-    - ppa:ondrej/php5
+    - ppa:ondrej/php
 
 - name: Install standard packages
   apt:

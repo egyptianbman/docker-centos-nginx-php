@@ -20,3 +20,9 @@
     state=directory
     owner=root
     group=root
+
+- file:
+    path=/var/run/php
+    state=directory
+    owner=root
+    group=root
