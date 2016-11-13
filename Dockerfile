@@ -25,6 +25,7 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN mkdir /var/log/php-fpm/
 RUN ln -sf /dev/stderr /var/log/php-fpm/error.log
+RUN ln -sf /dev/stderr /var/log/php5.5-fpm.log
 RUN ln -sf /dev/stderr /var/log/php-fpm/www-error.log
 RUN ln -sf /dev/stderr /var/log/php-fpm/www-slow.log
 
