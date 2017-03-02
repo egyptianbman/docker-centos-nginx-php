@@ -1,9 +1,9 @@
 ---
 # Set up the server
 
-- name: Set time zone to America/Chicago
+- name: Set time zone to UTC
   file:
     path=/etc/localtime
-    src=/usr/share/zoneinfo/America/Chicago
+    src=/usr/share/zoneinfo/UTC
     state=link
     force=yes
