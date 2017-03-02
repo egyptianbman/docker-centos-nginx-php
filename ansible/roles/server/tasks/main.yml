@@ -4,13 +4,12 @@
 # server
 - include: time.yml
 - include: packages.yml
-- include: composer.yml
+
+# user
+- include: dotfiles.yml
 
 # serving
 - include: supervisord.yml
 - include: nginx.yml
 - include: php.yml
-
-# user
-- include: dotfiles.yml
-- include: vim.yml
+- include: composer.yml
