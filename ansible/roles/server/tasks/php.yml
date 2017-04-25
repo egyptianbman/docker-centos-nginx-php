@@ -21,6 +21,11 @@
     regexp=";catch_workers_output = yes"
     line="catch_workers_output = yes"
 
+- name: passing AWS ECS env variable to php-fpm
+  lineinfile:
+    dest=/etc/php-fpm.d/www.conf
+    line="env[AWS_CONTAINER_CREDENTIALS_RELATIVE_URI] = $AWS_CONTAINER_CREDENTIALS_RELATIVE_URI"
+
 # php.ini
 - name: Create php.ini symlink so php-fpm picks it up
   file:
