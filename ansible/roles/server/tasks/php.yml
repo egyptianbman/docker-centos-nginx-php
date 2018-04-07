@@ -39,3 +39,9 @@
     dest=/etc/php.ini
     regexp="post_max_size = 8M"
     line="post_max_size = 200M"
+
+- file:
+    path=/run/php-fpm
+    state=directory
+    owner=root
+    group=root
